@@ -93,6 +93,7 @@
         // creating organizations header
         var orgHeader = document.createElement('h4');
         orgHeader.textContent = 'Organizations';
+        orgNode.appendChild(orgHeader);
         // adding organization images
         data3.forEach(function(){
           console.log(data3);
