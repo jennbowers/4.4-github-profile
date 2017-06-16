@@ -52,10 +52,15 @@
 
       // location
       var location = data.location;
+      var locationFaSpan = document.createElement('span');
+      locationFaSpan.setAttribute('class', 'fa fa-map-marker');
+      profileNode.appendChild(locationFaSpan);
+      var locationSpan = document.createElement('span');
+      profileNode.appendChild(locationSpan);
       var locationNode = document.createElement('p');
       locationNode.setAttribute('class', 'location');
       locationNode.textContent = location;
-      profileNode.appendChild(locationNode);
+      locationSpan.appendChild(locationNode);
 
 
       // email
@@ -73,10 +78,15 @@
 
       // created_at
       var created = moment(data.created_at).format("MMM Do");
+      var createdFaSpan = document.createElement('span');
+      createdFaSpan.setAttribute('class', 'fa fa-clock-o');
+      profileNode.appendChild(createdFaSpan);
+      var createdSpan = document.createElement('span');
+      profileNode.appendChild(createdSpan);
       var createdNode = document.createElement('p');
       createdNode.setAttribute('class', 'created');
       createdNode.textContent = 'Joined on ' + created;
-      profileNode.appendChild(createdNode);
+      createdSpan.appendChild(createdNode);
     })
   });
 
