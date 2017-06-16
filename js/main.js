@@ -39,7 +39,7 @@
       // login/username
       var login = data.login;
       var loginNode = document.createElement('h3');
-      loginNode.setAttribute('class', 'username login');
+      loginNode.setAttribute('class', 'login');
       loginNode.textContent = login;
       profileNode.appendChild(loginNode);
 
@@ -52,41 +52,32 @@
 
       // location
       var location = data.location;
+      var locationGroup = document.createElement('div');
+      locationGroup.setAttribute('class', 'location-group');
+      profileNode.appendChild(locationGroup);
       var locationFaSpan = document.createElement('span');
       locationFaSpan.setAttribute('class', 'fa fa-map-marker');
-      profileNode.appendChild(locationFaSpan);
-      var locationSpan = document.createElement('span');
-      profileNode.appendChild(locationSpan);
-      var locationNode = document.createElement('p');
+      locationGroup.appendChild(locationFaSpan);
+      var locationNode = document.createElement('span');
       locationNode.setAttribute('class', 'location');
       locationNode.textContent = location;
-      locationSpan.appendChild(locationNode);
+      locationGroup.appendChild(locationNode);
 
 
       // email
       var email = data.email;
+      var emailGroup = document.createElement('div');
+      emailGroup.setAttribute('class', 'email-group');
+      profileNode.appendChild(emailGroup);
       var emailFaSpan = document.createElement('span');
       emailFaSpan.setAttribute('class', 'fa fa-envelope-o');
-      profileNode.appendChild(emailFaSpan);
-      var emailSpan = document.createElement('span');
-      profileNode.appendChild(emailSpan);
+      emailGroup.appendChild(emailFaSpan);
       var emailNode = document.createElement('a');
       emailNode.setAttribute('class', 'email');
       emailNode.textContent = email;
       emailNode.href = email;
-      emailSpan.appendChild(emailNode);
+      emailGroup.appendChild(emailNode);
 
-      // created_at
-      var created = moment(data.created_at).format("MMM Do");
-      var createdFaSpan = document.createElement('span');
-      createdFaSpan.setAttribute('class', 'fa fa-clock-o');
-      profileNode.appendChild(createdFaSpan);
-      var createdSpan = document.createElement('span');
-      profileNode.appendChild(createdSpan);
-      var createdNode = document.createElement('p');
-      createdNode.setAttribute('class', 'created');
-      createdNode.textContent = 'Joined on ' + created;
-      createdSpan.appendChild(createdNode);
     })
   });
 
@@ -110,7 +101,7 @@
     // holds name a tag
     var reposNameDiv = document.createElement('div');
     reposNameDiv.setAttribute('class', 'repos-name-div');
-    reposNode.appendChild(reposNameDiv);
+    reposDiv.appendChild(reposNameDiv);
 
     // repos name
     var reposName = repos.name;
@@ -148,8 +139,10 @@
     var reposUpdated = moment(repos.updated_at).fromNow();
     var reposUpdatedNode = document.createElement('span');
     reposUpdatedNode.setAttribute('class', 'repos-updated');
-    reposUpdatedNode.textContent = reposUpdated;
+    reposUpdatedNode.textContent = 'Updated ' + reposUpdated;
     reposDiv.appendChild(reposUpdatedNode);
+
+    if ()
 
     // use the `` to replace strings, you can also use breaks and format it exactly like your html
     // repoDiv.innterHTML = `
