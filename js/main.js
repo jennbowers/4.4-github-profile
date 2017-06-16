@@ -5,7 +5,7 @@
   // Will not be present in production
   // declaring variables
   var userUrl = 'https://api.github.com/users/jennbowers';
-  var reposUrl = 'https://api.github.com/users/jennbowers/repos';
+  var reposUrl = 'https://api.github.com/users/jennbowers/repos?sort=updated';
   var headers = {};
   var profileNode = document.getElementById('profile');
   var reposNode = document.getElementById('repos');
@@ -60,10 +60,16 @@
 
       // email
       var email = data.email;
+      var emailFaSpan = document.createElement('span');
+      emailFaSpan.setAttribute('class', 'fa fa-envelope-o');
+      profileNode.appendChild(emailFaSpan);
+      var emailSpan = document.createElement('span');
+      profileNode.appendChild(emailSpan);
       var emailNode = document.createElement('a');
       emailNode.setAttribute('class', 'email');
       emailNode.textContent = email;
-      profileNode.appendChild(emailNode);
+      emailNode.href = email;
+      emailSpan.appendChild(emailNode);
 
       // created_at
       var created = moment(data.created_at).format("MMM Do");
@@ -91,14 +97,50 @@
     reposDiv.setAttribute('class', 'repos-div');
     reposNode.appendChild(reposDiv);
 
+    // holds name a tag
+    var reposNameDiv = document.createElement('div');
+    reposNameDiv.setAttribute('class', 'repos-name-div');
+    reposNode.appendChild(reposNameDiv);
+
     // repos name
     var reposName = repos.name;
     var reposNameNode = document.createElement('a');
+  // add href to repos_url
     reposNameNode.setAttribute('class', 'repos-name');
     reposNameNode.textContent = reposName;
-    reposDiv.appendChild(reposNameNode);
+    reposNameDiv.appendChild(reposNameNode);
 
-    // 
+    // declaring language variable early for use in language if statement
+    var reposLanguage = repos.language;
+
+    // adding colored circle corresponding to language (before so shows up before)
+    var coloredCircle = document.createElement('div');
+    coloredCircle.setAttribute('class', 'repos-circle');
+    reposDiv.appendChild(coloredCircle);
+    if (reposLanguage === 'JavaScript') {
+      coloredCircle.style.backgroundColor = '#f1e05a';
+    } else if (reposLanguage === 'CSS') {
+      coloredCircle.style.backgroundColor = '#563d7c';
+    } else if (reposLanguage === 'HTML') {
+      coloredCircle.style.backgroundColor = '#e34626';
+    } else {
+      coloredCircle.style.width = '0px';
+      coloredCircle.style.height = '0px';
+    }
+
+    // repos language
+    var reposLanguageNode = document.createElement('span');
+    reposLanguageNode.setAttribute('class', 'repos-language');
+    reposLanguageNode.textContent = reposLanguage;
+    reposDiv.appendChild(reposLanguageNode);
+
+    // repos updated time
+    var reposUpdated = moment(repos.updated_at).fromNow();
+    var reposUpdatedNode = document.createElement('span');
+    reposUpdatedNode.setAttribute('class', 'repos-updated');
+    reposUpdatedNode.textContent = reposUpdated;
+    reposDiv.appendChild(reposUpdatedNode);
+
     // use the `` to replace strings, you can also use breaks and format it exactly like your html
     // repoDiv.innterHTML = `
     // <div>
