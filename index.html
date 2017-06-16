@@ -10,11 +10,19 @@
   </head>
   <body>
     <header>
-
+      <img class="logo" src="images/github-logo-light-small.png" alt="github logo">
+      <input type="text" class="form-control search-github" name="search-github" placeholder="Search GitHub">
+      <nav>
+        <a href="https://github.com/pulls">Pull requests</a>
+        <a href="https://github.com/issues">Issues</a>
+        <a href="https://github.com/marketplace">Marketplace</a>
+        <a href="https://gist.github.com/">Gist</a>
+      </nav>
     </header>
     <div class="flex-container">
-      <div class="col-2 sidebar" id="profile">
-
+      <div class="col-2" id="sidebar">
+        <div class="profile"></div>
+        <div class="organizations"></div>
       </div>
       <div class="col-10 main-content" id="repos">
         <div class="repos-tabs">

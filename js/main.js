@@ -6,15 +6,19 @@
   // declaring variables
   var userUrl = 'https://api.github.com/users/jennbowers';
   var reposUrl = 'https://api.github.com/users/jennbowers/repos?sort=updated';
+  var orgUrl = 'https://api.github.com/user/orgs';
   var headers = {};
-  var profileNode = document.getElementById('profile');
+  var sidebarNode = document.getElementById('sidebar');
+  var profileNode = document.querySelector('.profile');
   var reposNode = document.getElementById('repos');
+  var orgNode = document.querySelector('.organizations');
 
+  try {
+      headers['Authorization'] = 'token ' + GITHUB_TOKEN;
+    } catch (e) {
+      //ignore error
+    }
 
-  if(GITHUB_TOKEN) {
-    // Set the AJAX header to send the token
-    headers['Authorization'] = 'token ' + GITHUB_TOKEN;
-  }
   // setting the headers to the object headers
   // user url fetch
   console.log(userUrl);
@@ -22,6 +26,7 @@
     // console.log(userUrl);
     response.json().then(function(data){
       console.log(data);
+
       // avatar_url
       var avatar = '<img src="' + data.avatar_url + '">';
       var avatarNode = document.createElement('div');
@@ -63,7 +68,6 @@
       locationNode.textContent = location;
       locationGroup.appendChild(locationNode);
 
-
       // email
       var email = data.email;
       var emailGroup = document.createElement('div');
@@ -77,9 +81,30 @@
       emailNode.textContent = email;
       emailNode.href = email;
       emailGroup.appendChild(emailNode);
-
-    })
+    });
   });
+
+  // organizations fetch
+  fetch(orgUrl, {headers: headers}).then(function(repsonse3){
+    repsonse3.json().then(function(data3){
+      if (data3.length === 0){
+        return;
+      }
+        // creating organizations header
+        var orgHeader = document.createElement('h4');
+        orgHeader.textContent = 'Organizations';
+        // adding organization images
+        data3.forEach(function(){
+          console.log(data3);
+          var orgImgNode = document.createElement('span');
+          orgImgNode.setAttribute('class', 'org-image');
+          var orgImg = '<img src="' + data3[0].avatar_url + '">';
+          orgImgNode.innerHTML = orgImg;
+          orgNode.appendChild(orgImgNode);
+        });
+    });
+  });
+
 
   // repos url
   fetch(reposUrl, {headers: headers}).then(function(response2){
@@ -90,7 +115,7 @@
         let reposData = data2[i];
         displayRepo(reposData);
       }
-    })
+    });
   });
 
   function displayRepo(repos){
@@ -142,7 +167,6 @@
     reposUpdatedNode.textContent = 'Updated ' + reposUpdated;
     reposDiv.appendChild(reposUpdatedNode);
 
-    if ()
 
     // use the `` to replace strings, you can also use breaks and format it exactly like your html
     // repoDiv.innterHTML = `

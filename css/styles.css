@@ -12,8 +12,46 @@ a {
   text-decoration: none;
 }
 
+header {
+  height: 53px;
+  background-color: #24292E;
+  padding-left: 11.5%;
+  margin-bottom: 25px;
+}
+
+.logo {
+  width: 43px;
+  height: auto;
+  margin-top: -3px;
+}
+
+.search-github {
+  display: inline-block;
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 26.5%;
+  background-color: #404448;
+  border: none;
+}
+
+nav {
+  display: inline-block;
+}
+
+nav a {
+  color: #C8C9CA;
+  font-weight: bold;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
 .flex-container {
-  width: 75%;
+  width: 76%;
   display: flex;
   justify-content: space-between;
   margin-left: auto;
