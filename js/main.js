@@ -12,6 +12,10 @@
   var profileNode = document.querySelector('.profile');
   var reposNode = document.getElementById('repos');
   var orgNode = document.querySelector('.organizations');
+  var reposCounterHolder = document.getElementById('repos-gray-outside');
+  var starsCounterHolder = document.getElementById('stars-gray-outside');
+  var followersCounterHolder = document.getElementById('followers-gray-outside');
+  var followingCounterHolder = document.getElementById('following-gray-outside');
 
   try {
       headers['Authorization'] = 'token ' + GITHUB_TOKEN;
@@ -81,6 +85,37 @@
       emailNode.textContent = email;
       emailNode.href = email;
       emailGroup.appendChild(emailNode);
+
+      // tabs
+
+      // repos tab
+      var reposCounter = data.public_repos;
+      var reposCounterSpan = document.createElement('span');
+      reposCounterSpan.setAttribute('class', 'tab-counter');
+      reposCounterSpan.textContent = reposCounter;
+      reposCounterHolder.appendChild(reposCounterSpan);
+
+      // stars tab
+      var starsCounter = 0;
+      var starsCounterSpan = document.createElement('span');
+      starsCounterSpan.setAttribute('class', 'tab-counter');
+      starsCounterSpan.textContent = starsCounter;
+      starsCounterHolder.appendChild(starsCounterSpan);
+
+      // followers tab
+      var followersCounter = data.followers;
+      var followersCounterSpan = document.createElement('span');
+      followersCounterSpan.setAttribute('class', 'tab-counter');
+      followersCounterSpan.textContent = followersCounter;
+      followersCounterHolder.appendChild(followersCounterSpan);
+
+      // following tab
+      var followingCounter = data.following;
+      var followingCounterSpan = document.createElement('span');
+      followingCounterSpan.setAttribute('class', 'tab-counter');
+      followingCounterSpan.textContent = followingCounter;
+      followingCounterHolder.appendChild(followingCounterSpan);
+
     });
   });
 
@@ -95,11 +130,11 @@
         orgHeader.textContent = 'Organizations';
         orgNode.appendChild(orgHeader);
         // adding organization images
-        data3.forEach(function(){
+        data3.forEach(function(item){
           console.log(data3);
           var orgImgNode = document.createElement('span');
           orgImgNode.setAttribute('class', 'org-image');
-          var orgImg = '<img src="' + data3[0].avatar_url + '">';
+          var orgImg = '<img src="' + item.avatar_url + '">';
           orgImgNode.innerHTML = orgImg;
           orgNode.appendChild(orgImgNode);
         });

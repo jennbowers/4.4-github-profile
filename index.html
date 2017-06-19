@@ -2,7 +2,7 @@
 <html lang=en>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Your Repositories</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,19 +23,86 @@
       <div class="col-2" id="sidebar">
         <div class="profile"></div>
         <div class="organizations"></div>
+        <div class="header-right-float">
+          <div class="add-new">
+
+          </div>
+          <div class="my-settings">
+
+          </div>
+        </div>
       </div>
       <div class="col-10 main-content" id="repos">
         <div class="repos-tabs">
-
+          <div class="overview tab">
+            <a href="https://github.com/jennbowers">Overview</a>
+          </div>
+          <div class="repositories tab" id="active-tab">
+            <a href="#">Repositories</a>
+            <div class="gray-outside" id="repos-gray-outside"></div>
+          </div>
+          <div class="stars tab">
+            <a href="https://github.com/jennbowers?tab=stars">Stars</a>
+            <div class="gray-outside" id="stars-gray-outside"></div>
+          </div>
+          <div class="followers tab">
+            <a href="https://github.com/jennbowers?tab=followers">Followers</a>
+            <div class="gray-outside" id="followers-gray-outside"></div>
+          </div>
+          <div class="following tab">
+            <a href="https://github.com/jennbowers?tab=following">Following</a>
+            <div class="gray-outside" id="following-gray-outside"></div>
+          </div>
         </div>
         <div class="repos-search">
-
+          <input type="text" class="form-control" name="search-repos" id="search-repos" placeholder=" Search repositories...">
+          <select class="type-select form-control" id="type-select" name="type-select">
+            <option value="all">Type: All</option>
+            <option value="">Public</option>
+            <option value="">Private</option>
+            <option value="">Sources</option>
+            <option value="">Forks</option>
+            <option value="">Mirrors</option>
+          </select>
+          <select class="lang-select form-control" id="lang-select" name="lang-select">
+            <option value="all">Language: All</option>
+            <option value="">CSS</option>
+            <option value="">HTML</option>
+            <option value="">JavaScript</option>
+          </select>
+          <button type="button" class="btn btn-success"name="new">New</button>
         </div>
 
       </div>
     </div>
     <footer>
-
+      <!-- not tested -->
+      <!-- float right and link up all nav links -->
+      <div class="footer-left">
+        <p class="copyright">© 2017 GitHub, Inc.</p>
+        <nav class="footer-nav-left">
+          <a href="https://help.github.com/articles/github-terms-of-service/">Terms</a>
+          <a href="https://help.github.com/articles/github-privacy-statement/">Privacy</a>
+          <a href="https://help.github.com/articles/github-security/">Security</a>
+          <a href="https://status.github.com/">Status</a>
+          <a href="https://help.github.com/">Help</a>
+        </nav>
+      </div>
+      <!-- TEXT ALIGN CENTER -->
+      <div class="footer-logo-center">
+        <a href="https://github.com/"><img src="images/github-logo-gray-small.png" alt="GitHub Logo" class="footer-logo"></a>
+      </div>
+      <!-- FLOAT THIS DIV RIGHT AND LINK ALL A TAGS -->
+      <div class="footer-right">
+        <nav class="footer-nav-right">
+          <a href="https://github.com/contact">Contact GitHub</a>
+          <a href="https://developer.github.com/">API</a>
+          <a href="https://services.github.com/">Training</a>
+          <a href="https://github.myshopify.com/">Shop</a>
+          <a href="https://github.com/blog">Blog</a>
+          <a href="https://github.com/about">About</a>
+        </nav>
+      </div>
     </footer>
 
 
